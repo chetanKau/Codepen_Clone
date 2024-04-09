@@ -1,10 +1,14 @@
 import React, { useState } from 'react'
+import {Routes,Route} from 'react-router-dom'
 import { HiChevronDoubleLeft } from 'react-icons/hi2'
 import { MdHome } from 'react-icons/md'
 import { motion } from 'framer-motion'
 import { FaSearchengin } from 'react-icons/fa6'
 import { Link } from 'react-router-dom'
-import { logo } from '../assets/index'
+import { logo, logo_2 } from '../assets/index'
+import {Projects,SignUp} from '../container/Index'
+
+
 
 const Home = () => {
 
@@ -28,7 +32,7 @@ const Home = () => {
 
                     {/* Logo */}
                     <Link to={"/home"}>
-                        <img src={logo} alt='logo' className='object-contain w-52 h-auto ' />
+                        <img src={logo_2} alt='logo' className='object-contain w-40 h-auto ' />
                     </Link>
 
                     {/* start coding */}
@@ -58,12 +62,33 @@ const Home = () => {
                 <div className='w-full flex items-center justify-between gap-3'>
                     {/* search */}
                     <div className='bg-secondary w-full px-4 py-3 flex items-center justify-center gap-3'>
-                        <FaSearchengin className='text-2xl text-primaryText'/>
-                        <input type='text'  className='flex-1 px-4 text-xl bg-transparent outline-none border-none text-primaryText placeholder:text-gray-600' placeholder='Search Here'/>
+                        <FaSearchengin className='text-2xl text-primaryText' />
+                        <input type='text' className='flex-1 px-4 text-xl bg-transparent outline-none border-none text-primaryText placeholder:text-gray-600' placeholder='Search Here' />
                     </div>
 
                     {/* Profile section */}
+
+                    {!user && (
+                        <motion.div whileTap={{ scale: 0.9 }} className='flex items-center justify-start gap-3'>
+                            <Link to={'/home/auth'} className='bg-emerald-500 px-6 py-2 rounded-md text-white text-lg cursor-pointer hover:bg-emerald-700'>
+                                SignUp
+                            </Link>
+                        </motion.div>
+                    )}
+
+                    {user && (
+                        <div></div>
+                    )}
                 </div>
+                {/* bottom section */}
+                <div className='w-full'>
+                    <Routes>
+                        <Route path='/*' element={<Projects/>} />
+                        <Route path='/auth' element={<SignUp/>} />
+                    </Routes>
+
+                </div>
+
 
             </div>
         </>

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { FaEnvelope, FaEye, FaEyeSlash } from "react-icons/fa6";
+import {  FaEye, FaEyeSlash } from "react-icons/fa6";
 import { motion } from 'framer-motion'
 
 const UserAuthInput = ({ label, placeholder, isPass, key, setStateFunction, Icon, setGetEmailValidationState }) => {

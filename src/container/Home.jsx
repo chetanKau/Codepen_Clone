@@ -1,19 +1,21 @@
 import React, { useState } from 'react'
-import {Routes,Route} from 'react-router-dom'
+import { Routes, Route } from 'react-router-dom'
 import { HiChevronDoubleLeft } from 'react-icons/hi2'
 import { MdHome } from 'react-icons/md'
 import { motion } from 'framer-motion'
 import { FaSearchengin } from 'react-icons/fa6'
 import { Link } from 'react-router-dom'
-import { logo, logo_2 } from '../assets/index'
-import {Projects,SignUp} from '../container/Index'
+import { logo_2 } from '../assets/index'
+import { Projects, SignUp } from '../container/Index'
+import { useSelector } from 'react-redux'
+import { UserProfileDetails } from '../components/index';
 
 
 
 const Home = () => {
 
     const [isSideMenu, setIsSideMenu] = useState(false);
-    const [user, setUser] = useState(null);
+    const user = useSelector((state) => state.user?.user)
     return (
         <>
             <div className={`w-2 ${isSideMenu ? " w-2" : "flex-[.2] xl:flex[.2] "} 
@@ -76,15 +78,16 @@ const Home = () => {
                         </motion.div>
                     )}
 
-                    {user && (
-                        <div></div>
-                    )}
+                    {user && <UserProfileDetails />}
+
                 </div>
+
                 {/* bottom section */}
+
                 <div className='w-full'>
                     <Routes>
-                        <Route path='/*' element={<Projects/>} />
-                        <Route path='/auth' element={<SignUp/>} />
+                        <Route path='/*' element={<Projects />} />
+                        <Route path='/auth' element={<SignUp />} />
                     </Routes>
 
                 </div>

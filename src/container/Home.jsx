@@ -34,7 +34,7 @@ const Home = () => {
 
                     {/* Logo */}
                     <Link to={"/home"}>
-                        <img src={logo_2} alt='logo' className='object-contain w-40 h-auto ' />
+                        <img src={logo_2} alt='logo' className='object-contain w-32 h-auto ' />
                     </Link>
 
                     {/* start coding */}

@@ -38,7 +38,7 @@ const Home = () => {
                     </Link>
 
                     {/* start coding */}
-                    <Link to={'/newProject'}>
+                    <Link to={"/newProject"}>
                         <div className='px-6 py-3 flex items-center justify-center rounded-xl border border-gray-400 cursor-pointer group hover:border-gray-200'>
                             <p className='text-gray-400 group-hover:text-gray-200'>START CODING</p>
 
@@ -50,7 +50,9 @@ const Home = () => {
 
 
                     {user && (
-                        <Link to={'/home/projects'} className='flex items-center justify-center gap-6'>
+                        <Link
+                            to={'/home/projects'}
+                            className='flex items-center justify-center gap-6'>
                             <MdHome className='text-primaryText text-xl' />
                             <p className='text-lg text-primaryText'>Home</p>
                         </Link>

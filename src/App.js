@@ -1,17 +1,18 @@
 import './App.css';
 import { Routes, Route, Navigate, useNavigate } from 'react-router-dom'
-import { Home } from './container/Index';
+import { Home, NewProject } from './container/Index';
 import { useEffect, useState } from 'react';
 import { auth, db } from './config/Firebase.config';
 import { doc, setDoc } from 'firebase/firestore';
 import { Spinner } from './components/index';
-import {useDispatch} from 'react-redux'
+import { useDispatch } from 'react-redux'
 import { SET_USER } from './context/actions/userActions';
+
 
 function App() {
   const [isLoading, setIsLoading] = useState(true)
   const navigate = useNavigate()
-  const dispatch=useDispatch()
+  const dispatch = useDispatch()
 
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged(userCred => {
@@ -21,7 +22,7 @@ function App() {
           .then(() => {
             // dispatch teh action store
             dispatch(SET_USER(userCred.providerData[0]))
-            navigate("/home/projects",{replace:true})
+            navigate("/home/projects", { replace: true })
           }
           )
       }
@@ -49,7 +50,10 @@ function App() {
 
             <Routes>
               <Route path='/home/*' element={<Home />} />
+              <Route path='/newProject' element={<NewProject/>} />
+
               <Route path='*' element={<Navigate to={"/home"} />} />
+              
             </Routes>
 
           </div>

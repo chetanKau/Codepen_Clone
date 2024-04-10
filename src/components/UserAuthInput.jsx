@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import {  FaEye, FaEyeSlash } from "react-icons/fa6";
+import { FaEye, FaEyeSlash } from "react-icons/fa6";
 import { motion } from 'framer-motion'
 
 const UserAuthInput = ({ label, placeholder, isPass, key, setStateFunction, Icon, setGetEmailValidationState }) => {
@@ -31,8 +31,7 @@ const UserAuthInput = ({ label, placeholder, isPass, key, setStateFunction, Icon
                     placeholder={placeholder}
                     className="flex-1 w-full h-full py-2 outline-none border-none bg-transparent text-text555 text-lg"
                     value={value}
-                    onChange={
-                        handleTextChange
+                    onChange={handleTextChange
                     }
                 />
                 {isPass && (

@@ -33,7 +33,7 @@ const UserProfileDetails = () => {
         }
       </div>
       <motion.div
-      onClick={()=>setIsMenu(!isMenu)}
+        onClick={() => setIsMenu(!isMenu)}
         whileTap={{ scale: 0.9 }}
         className='p-4 rounded-md flex items-center justify-center bg-secondary cursor-pointer'
       >
@@ -44,7 +44,7 @@ const UserProfileDetails = () => {
         {
           isMenu && (
             <motion.div
-            {...slideInOut}
+              {...slideInOut}
               className='bg-secondary absolute top-16 
            right-0 px-4 py-3 rounded-xl shadow-md z-10     
            flex  flex-col items-center justify-start gap-4 min-w-[225px]'>

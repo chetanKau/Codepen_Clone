@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { StrictMode } from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
@@ -9,12 +9,13 @@ import Store from './context/store';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-
-    <Provider store={Store}>
-        <Router >
-            <App />
-        </Router>
-    </Provider>
+    
+        <Provider store={Store}>
+            <Router >
+                <App />
+            </Router>
+        </Provider>
+    
 
 );
 

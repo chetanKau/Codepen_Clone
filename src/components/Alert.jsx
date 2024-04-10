@@ -7,19 +7,19 @@ const Alert = (status, alertMsg) => {
         <motion.div {...slideInOut}
             className='fixed top-24 right-12 z-10'>
             {
-                status === "Success" && (
+                status === "Success" && 
                     <div className='px-4 py-2 rounded-md bg-emerald-400 shadow-md shadow-emerald-500'>
                         <p className='text-lg text-primary'>{alertMsg}</p>
                     </div>
-                )
+                
             }
 
             {
-                status === "Warning" && (
+                status === "Warning" && 
                     <div className='px-4 py-2 rounded-md bg-yellow-400 shadow-md shadow-yellow-500'>
                         <p className='text-lg text-primary'>{alertMsg}</p>
                     </div>
-                )
+                
             }
 
             {

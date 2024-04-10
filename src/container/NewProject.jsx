@@ -269,7 +269,8 @@ const NewProject = () => {
                     </SplitPane>
 
                     {/* bottom result section */}
-                    <div className='bg-red-400 w-full h-full flex items-center justify-center mb-10' style={{ overflow: "hidden", height: "100%" }}>
+                    <div className='bg-white w-full h-full flex items-center justify-center mb-10'
+                        style={{ overflow: "scroll", height: "100%" }}>
                         <iframe
                             title='Result'
                             srcDoc={output}

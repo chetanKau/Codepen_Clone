@@ -1,4 +1,4 @@
-import React, { useState,useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { FaChevronDown, FaCss3, FaHtml5, FaJs } from 'react-icons/fa6';
 import { FcSettings } from 'react-icons/fc';
 import SplitPane from 'react-split-pane';
@@ -15,7 +15,7 @@ const NewProject = () => {
 
     useEffect(() => {
         updateOutput()
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [html, css, js]);
 
     const updateOutput = () => {
@@ -52,7 +52,7 @@ const NewProject = () => {
                     {/* top coding section */}
                     <SplitPane split='vertical' minSize={500}>
                         {/* html code here */}
-                        <div className='w-full h-full flex flex-col items-start justify-start overflow-y-scroll'>
+                        <div className='w-full h-full flex flex-col items-start justify-start '>
                             <div className='w-full flex items-center justify-between'>
                                 <div className='bg-secondary px-4 py-2 border-t-4 flex items-center justify-center gap-3 border-t-gray-500'>
                                     <FaHtml5 className='text-red-500 text-xl' />
@@ -64,7 +64,7 @@ const NewProject = () => {
                                     <FaChevronDown className='text-xl text-primaryText' />
                                 </div>
                             </div>
-                            <div className='w-full px-2'>
+                            <div className='w-full px-2 overflow-hidden'>
                                 <CodeMirror
                                     value={html}
                                     height="600px"
@@ -79,7 +79,7 @@ const NewProject = () => {
 
                         <SplitPane split='vertical' minSize={500}>
                             {/* CSS Code here */}
-                            <div className='w-full h-full flex flex-col items-start justify-start overflow-y-scroll'>
+                            <div className='w-full h-full flex flex-col items-start justify-start '>
                                 <div className='w-full flex items-center justify-between'>
                                     <div className='bg-secondary px-4 py-2 border-t-4 flex items-center justify-center gap-3 border-t-gray-500'>
                                         <FaCss3 className='text-sky-500 text-xl' />
@@ -91,7 +91,7 @@ const NewProject = () => {
                                         <FaChevronDown className='text-xl text-primaryText' />
                                     </div>
                                 </div>
-                                <div className='w-full px-2'>
+                                <div className='w-full px-2 overflow-hidden'>
                                     <CodeMirror
                                         value={css}
                                         height="600px"
@@ -109,7 +109,7 @@ const NewProject = () => {
 
                                 {/* JS code here */}
 
-                                <div className='w-full h-full flex flex-col items-start justify-start overflow-y-scroll'>
+                                <div className='w-full h-full flex flex-col items-start justify-start'>
                                     <div className='w-full flex items-center justify-between'>
                                         <div className='bg-secondary px-4 py-2 border-t-4 flex items-center justify-center gap-3 border-t-gray-500'>
                                             <FaJs className='text-yellow-500 text-xl' />
@@ -121,7 +121,7 @@ const NewProject = () => {
                                             <FaChevronDown className='text-xl text-primaryText' />
                                         </div>
                                     </div>
-                                    <div className='w-full px-2'>
+                                    <div className='w-full px-2 overflow-hidden'>
                                         <CodeMirror
                                             value={js}
                                             height="600px"
@@ -141,10 +141,10 @@ const NewProject = () => {
 
                     {/* bottom result section */}
                     <div className='bg-white w-full h-full' style={{ overflow: "hidden", height: "100%" }}>
-                        <iframe 
-                        title='Result'
-                        srcDoc={output}
-                        style={{border:"none",widows:"100%",height:"100%"}}
+                        <iframe
+                            title='Result'
+                            srcDoc={output}
+                            style={{ border: "none", widows: "100%", height: "100%" }}
                         />
                     </div>
                 </SplitPane>

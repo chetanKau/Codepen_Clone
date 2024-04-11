@@ -3,8 +3,9 @@ const searchReducers = (state = "", action) => {
         case "SET_SEARCH_TERM":
             return {
                 ...state,
-                searchTerm: action.searchTerm
-            };
+                searchTerm: action.searchTerm,
+
+            }
         case "SET_SEARCH_TERM_EMPTY":
             return {
                 ...state,
@@ -12,6 +13,7 @@ const searchReducers = (state = "", action) => {
             }
         default:
             return state;
+            
 
     }
 }

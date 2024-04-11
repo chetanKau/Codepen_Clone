@@ -6,33 +6,31 @@ import { MdBookmark } from 'react-icons/md';
 const Projects = () => {
 
   const [filtered, setFiltered] = useState(null);
-  const searchTerm = useSelector(state => state.searchTerm?.searchTerm ? state.searchTerm?.searchTerm : "")
+  const projects = useSelector((state) => state.projects?.projects)
+  const searchTerms = useSelector(state => state.searchTerm?.searchTerm ? state.searchTerm?.searchTerm : "")
 
   useEffect(() => {
-    if (searchTerm?.length > 0) {
+    if (searchTerms?.length > 0) {
 
-      projects?.filter(project => {
-        console.log("Fileterd..........", project);
+      const filterDtata= projects?.filter((project) => {
+        // console.log("Fileterd..........", project);
         const lowerCaseItem = project?.title.toLowerCase()
-        return searchTerm.split("").every((letter) => lowerCaseItem.includes(letter))
+        return searchTerms.split("").every((letter) => lowerCaseItem.includes(letter))
       })
-
+      setFiltered(filterDtata)
     } else {
       setFiltered(null)
     }
 
-  }, [searchTerm])
+  }, [searchTerms]);
 
-
-  const projects = useSelector((state) => state.projects?.projects)
 
   return (
     <div className='w-full py-6 flex items-center justify-center gap-6 flex-wrap'>
       {
-        filtered ? (<>{
+        filtered ? (<> {
           filtered && filtered.map((project, index) =>
-            <ProjectCard key={project.id} project={project} index={index}
-            />
+            <ProjectCard key={project.id} project={project} index={index} />
           )}
         </>
         ) : (
@@ -52,10 +50,10 @@ const Projects = () => {
 const ProjectCard = (project, index) => {
   return <motion.div
     key={index}
-    initial={{opacity:0}}
-    animate={{opacity:1}}
-    exit={{opacity:0}}
-    transition={{duration:0.5,delay:index*0.5}}
+    initial={{ opacity: 0 }}
+    animate={{ opacity: 1 }}
+    exit={{ opacity: 0 }}
+    transition={{ duration: 0.5, delay: index * 0.5 }}
     className='w-full cursor-pointer md:w-[400px] h-[355px] bg-secondary rounded-md p-5 flex items-center justify-center gap-4'>
 
     <div className='bg-primary flex flex-col w-full h-full rounded-md overflow-hidden '

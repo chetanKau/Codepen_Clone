@@ -5,10 +5,10 @@ import searchReducers from './searchReducers';
 
 
 
-const myReducer= combineReducers({
-    user:userAuthReducer,
-    projects:projectReducers,
-    searchTerm:searchReducers,
+const myReducer = combineReducers({
+    user: userAuthReducer,
+    projects: projectReducers,
+    searchTerm: searchReducers,
 })
 
 export default myReducer;

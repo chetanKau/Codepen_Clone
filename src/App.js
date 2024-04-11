@@ -9,9 +9,6 @@ import { useDispatch } from 'react-redux'
 import { SET_USER } from './context/actions/userActions';
 import { SET_PROJECTS } from './context/actions/projectActions';
 
-
-
-
 function App() {
   const [isLoading, setIsLoading] = useState(true)
   const navigate = useNavigate()
@@ -43,11 +40,11 @@ function App() {
   }, [])
 
 useEffect(()=>{
-    const projectsQuery=query(
+    const projectQuery=query(
       collection(db,"Projects"),
       orderBy("id","desc")
     )
-    const unsubscribe=onSnapshot(projectsQuery,(querySnaps=>{
+    const unsubscribe=onSnapshot(projectQuery,(querySnaps=>{
       const projectList=querySnaps.docs.map(doc=>doc.data())
       dispatch(SET_PROJECTS(projectList))
     }))

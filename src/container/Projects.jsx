@@ -24,7 +24,7 @@ const ProjectCard = (project, index) => {
     <div className='bg-primary flex flex-col w-full h-full rounded-md overflow-hidden ' style={{ overflow: "hidden", height: "100%" }}>
       <iframe
         title='Result'
-        srcDoc={project.output}
+        srcDoc={project?.project?.output}
         style={{ border: "none", widows: "100%", height: "100%" }}
       />
 
@@ -33,12 +33,12 @@ const ProjectCard = (project, index) => {
         {/* image */}
         <div className='w-14 h-14 flex items-center justify-center rounded-xl overflow-hidden cursor-pointer bg-emerald-500'>
           {
-            project?.user?.photoURL ? (
+            project?.project?.user?.photoURL ? (
 
               <motion.img
                 whileHover={{ scale: 1.2 }}
-                src={project?.user?.photoURL}
-                alt={project?.user?.displayName}
+                src={project?.project?.user?.photoURL}
+                alt={project?.project?.user?.displayName}
                 referrerPolicy='no-referrer'
                 className='w-full h-full object-cover'
               />
@@ -55,10 +55,10 @@ const ProjectCard = (project, index) => {
     {/* name */}
     <div>
    
-      <p className='text-white text-lg capitalize '>{project?.title}</p>
-      { console.log("Project title now",project.title)}
+      <p className='text-white text-lg capitalize '>{project?.project?.title}</p>
+      { console.log("Project title now",project?.project)}
         <p className='text-primaryText text-sm'>
-          {project?.user?.displayName ? project?.user?.displayName : `${project?.user?.email.split("@")[0]}`}
+          {project?.project?.user?.displayName ? project?.project?.user?.displayName : `${project?.project?.user?.email.split("@")[0]}`}
         </p>
       
     </div>

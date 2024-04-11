@@ -56,9 +56,12 @@ const NewProject = () => {
         }
 
         await setDoc(doc(db, "Projects", id), _doc).then((res) => {
-            setAlert(true)
+           res.setAlert(true)
+           alert("Project saved successfully")
+            
         }).catch((err) => {
             console.log(err);
+            
         })
         setInterval(() => {
             setAlert(false)

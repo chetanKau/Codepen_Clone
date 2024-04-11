@@ -1,6 +1,7 @@
 import React from 'react'
 import { useSelector } from 'react-redux';
 import { motion } from 'framer-motion';
+import { MdBookmark } from 'react-icons/md';
 
 const Projects = () => {
 
@@ -18,17 +19,17 @@ const Projects = () => {
 }
 
 const ProjectCard = (project, index) => {
-  return <motion.div key={index} className='w-full cursor-pointer md:w-[350px] h-[300px] bg-secondary rounded-md p-4 flex items-center justify-center gap-4'>
-
+  return <motion.div key={index} className='w-full cursor-pointer md:w-[450px] h-[375px] bg-secondary rounded-md p-3 flex items-center justify-center gap-4'>
 
     <div className='bg-primary flex flex-col w-full h-full rounded-md overflow-hidden ' style={{ overflow: "hidden", height: "100%" }}>
       <iframe
         title='Result'
         srcDoc={project?.project?.output}
-        style={{ border: "none", widows: "100%", height: "100%" }}
+        style={{ border: "none", widows: "100%", height: "100%", }}
+
       />
 
-      <div className='flex items-center justify-start gap-3 w-full'>
+      <div className='flex -mb-5 items-center justify-start gap-3 w-full'>
 
         {/* image */}
         <div className='w-14 h-14 flex items-center justify-center rounded-xl overflow-hidden cursor-pointer bg-emerald-500'>
@@ -47,21 +48,26 @@ const ProjectCard = (project, index) => {
               <p className='text-xl text-white font-semibold capitalize'>
                 {project?.user?.email[0]}
               </p>
-            )
-          }
+            )}
+        </div>
+
+        {/* name */}
+        
+        <div >
+
+          <p className='text-white text-lg capitalize '>{project?.project?.title}</p>
+          {console.log("Project title now", project?.project)}
+          <p className='text-primaryText text-sm'>
+            {project?.project?.user?.displayName ? project?.project?.user?.displayName : `${project?.project?.user?.email.split("@")[0]}`}
+          </p>
+
         </div>
       </div>
-    
-    {/* name */}
-    <div>
-   
-      <p className='text-white text-lg capitalize '>{project?.project?.title}</p>
-      { console.log("Project title now",project?.project)}
-        <p className='text-primaryText text-sm'>
-          {project?.project?.user?.displayName ? project?.project?.user?.displayName : `${project?.project?.user?.email.split("@")[0]}`}
-        </p>
-      
-    </div>
+
+      <motion.div className='cursor-pointer ml-auto' whileInView={{ scale: 0.9 }}>
+        <MdBookmark className='text-primaryText text-3xl' />
+      </motion.div>
+
     </div>
   </motion.div >
 };

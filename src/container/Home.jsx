@@ -7,8 +7,9 @@ import { FaSearchengin } from 'react-icons/fa6'
 import { Link } from 'react-router-dom'
 import { logo_2 } from '../assets/index'
 import { Projects, SignUp } from '../container/Index'
-import { useSelector } from 'react-redux'
+import { useSelector,useDispatch } from 'react-redux'
 import { UserProfileDetails } from '../components/index';
+import { SET_SEARCH_TERM } from './../context/actions/searchActions';
 
 
 
@@ -16,6 +17,8 @@ const Home = () => {
 
     const [isSideMenu, setIsSideMenu] = useState(false);
     const user = useSelector((state) => state.user?.user)
+    const searchTerm = useSelector(state => state.searchTerm?.searchTerm ? state.searchTerm?.searchTerm : "")
+    const dispatch=useDispatch()
     return (
         <>
             <div className={`w-2 ${isSideMenu ? " w-2" : "flex-[.2] xl:flex[.2] "} 
@@ -67,7 +70,14 @@ const Home = () => {
                     {/* search */}
                     <div className='bg-secondary w-full px-4 py-3 flex items-center justify-center gap-3'>
                         <FaSearchengin className='text-2xl text-primaryText' />
-                        <input type='text' className='flex-1 px-4 text-xl bg-transparent outline-none border-none text-primaryText placeholder:text-gray-600' placeholder='Search Here' />
+                        <input type='text' 
+                        value={searchTerm}
+                        className='flex-1 px-4 text-xl bg-transparent outline-none border-none text-primaryText placeholder:text-gray-600' 
+                        placeholder='Search Here'
+                        onChange={(e)=>{
+                            dispatch(SET_SEARCH_TERM(e.target.value))
+                        }} 
+                        />
                     </div>
 
                     {/* Profile section */}

@@ -5,7 +5,7 @@ export const fadeInOut = {
 }
 
 export const slideInOut = {
-    initial: { opcatiy: 0 ,y:50},
-    animate: { opcatiy: 1,y:0 },
-    exit: { opacity: 0 ,y:50},
+    initial: { opcatiy: 0, y: 40 },
+    animate: { opcatiy: 1, y: 0 },
+    exit: { opacity: 0, y: 80 },
 }

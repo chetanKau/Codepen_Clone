@@ -1,6 +1,6 @@
 import React from 'react'
 import { motion } from 'framer-motion'
-import { slideInOut } from '../animation'
+import {slideInOut}  from '../animation'
 
 const Alert = (status, alertMsg) => {
     return (

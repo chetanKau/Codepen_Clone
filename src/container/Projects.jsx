@@ -1,27 +1,65 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux';
 import { motion } from 'framer-motion';
 import { MdBookmark } from 'react-icons/md';
 
 const Projects = () => {
 
+  const [filtered, setFiltered] = useState(null);
+  const searchTerm = useSelector(state => state.searchTerm?.searchTerm ? state.searchTerm?.searchTerm : "")
+
+  useEffect(() => {
+    if (searchTerm?.length > 0) {
+
+      projects?.filter(project => {
+        console.log("Fileterd..........", project);
+        const lowerCaseItem = project?.title.toLowerCase()
+        return searchTerm.split("").every((letter) => lowerCaseItem.includes(letter))
+      })
+
+    } else {
+      setFiltered(null)
+    }
+
+  }, [searchTerm])
+
+
   const projects = useSelector((state) => state.projects?.projects)
-  // console.log(projects)
+
   return (
     <div className='w-full py-6 flex items-center justify-center gap-6 flex-wrap'>
       {
-        projects && projects.map((project, index) =>
-          <ProjectCard key={project.id} project={project} index={index} />
+        filtered ? (<>{
+          filtered && filtered.map((project, index) =>
+            <ProjectCard key={project.id} project={project} index={index}
+            />
+          )}
+        </>
+        ) : (
+          <>
+            {
+              projects && projects.map((project, index) =>
+                <ProjectCard key={project.id} project={project} index={index} />
+              )}
+          </>
         )
+
       }
     </div>
   )
 }
 
 const ProjectCard = (project, index) => {
-  return <motion.div key={index} className='w-full cursor-pointer md:w-[450px] h-[375px] bg-secondary rounded-md p-3 flex items-center justify-center gap-4'>
+  return <motion.div
+    key={index}
+    initial={{opacity:0}}
+    animate={{opacity:1}}
+    exit={{opacity:0}}
+    transition={{duration:0.5,delay:index*0.5}}
+    className='w-full cursor-pointer md:w-[400px] h-[355px] bg-secondary rounded-md p-5 flex items-center justify-center gap-4'>
 
-    <div className='bg-primary flex flex-col w-full h-full rounded-md overflow-hidden ' style={{ overflow: "hidden", height: "100%" }}>
+    <div className='bg-primary flex flex-col w-full h-full rounded-md overflow-hidden '
+      style={{ overflow: "hidden", height: "100%" }}>
       <iframe
         title='Result'
         srcDoc={project?.project?.output}
@@ -52,7 +90,7 @@ const ProjectCard = (project, index) => {
         </div>
 
         {/* name */}
-        
+
         <div >
 
           <p className='text-white text-lg capitalize '>{project?.project?.title}</p>
